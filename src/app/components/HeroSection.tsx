@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 export function HeroSection() {
     const HERO_CONTENT = {
         header: 'AI Agents Thrive on Strong Foundations, Not Just Models',
@@ -25,12 +27,22 @@ export function HeroSection() {
                 {/* Content */}
                 <div className="relative z-10 w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 py-12 sm:py-20 mx-auto">
                     <div className="max-w-[640px] w-full">
-                        <h1 className="text-[36px] md:text-[48px] leading-[1.1] text-[#FFFFFF] mb-6 sm:mb-8 text-left">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="text-[36px] md:text-[48px] leading-[1.1] text-[#FFFFFF] mb-6 sm:mb-8 text-left"
+                        >
                             {HERO_CONTENT.header}
-                        </h1>
-                        <p className="text-base sm:text-xl lg:text-2xl text-[#acb9bf] leading-relaxed max-w-2xl text-left">
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+                            className="text-base sm:text-xl lg:text-2xl text-[#acb9bf] leading-relaxed max-w-2xl text-left"
+                        >
                             {HERO_CONTENT.body}
-                        </p>
+                        </motion.p>
 
                         <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
                             <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black hover:bg-white/90 transition-colors text-sm sm:text-base">
