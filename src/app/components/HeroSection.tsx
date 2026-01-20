@@ -25,7 +25,7 @@ export function HeroSection() {
                 {/* Content */}
                 <div className="relative z-10 w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 py-12 sm:py-20 mx-auto">
                     <div className="max-w-[640px] w-full">
-                        <h1 className="text-[28px] sm:text-[36px] md:text-[48px] leading-[1.1] text-[#FFFFFF] mb-6 sm:mb-8 text-left">
+                        <h1 className="text-[36px] md:text-[48px] leading-[1.1] text-[#FFFFFF] mb-6 sm:mb-8 text-left">
                             {HERO_CONTENT.header}
                         </h1>
                         <p className="text-base sm:text-xl lg:text-2xl text-[#acb9bf] leading-relaxed max-w-2xl text-left">

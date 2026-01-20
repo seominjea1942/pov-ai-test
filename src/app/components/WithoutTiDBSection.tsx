@@ -5,6 +5,7 @@ const PROBLEMS = [
   {
     title: 'Manual Sharding',
     problem: 'Manual sharding forces architectural complexity early. You write application logic around database boundaries, coupling business rules to infrastructure decisions that become impossible to reverse.',
+    solution_title: 'Automatic Sharding',
     solution: 'Early sharding decisions introduce architectural complexity. Application logic becomes tightly coupled to data boundaries, making systems hard to evolve and costly to scale.',
     illustrationBefore: '/illustration/manual_sharding.svg',
     illustrationAfter: '/illustration/auto_sharding.svg',
@@ -12,6 +13,7 @@ const PROBLEMS = [
   {
     title: 'Operational Downtime',
     problem: 'Schema changes require maintenance windows. Each migration is a gamble: lock the table, block writes, hope nothing breaks. Teams delay necessary changes to avoid the operational risk.',
+    solution_title: 'Schema Changes Without Downtime',
     solution: 'Schema changes require maintenance windows and operational risk. Teams delay necessary evolution to avoid locked tables, blocked writes, and production failures.',
     illustrationBefore: '/illustration/down_time.svg',
     illustrationAfter: '/illustration/no_down_time.svg',
@@ -19,6 +21,7 @@ const PROBLEMS = [
   {
     title: 'Schema Rigidity',
     problem: 'AI workloads require flexible iteration, but legacy databases force schema rigidity. Adding new fields or changing data models cascades into weeks of migration planning and execution risk.',
+    solution_title: 'Flexible Schema for Rapid Iteration',
     solution: 'AI workloads evolve rapidly, but legacy databases resist change. Simple model updates turn into risky migrations that slow iteration and increase failure rates.',
     illustrationBefore: '/illustration/locked.svg',
     illustrationAfter: '/illustration/unlocked.svg',
@@ -26,6 +29,7 @@ const PROBLEMS = [
   {
     title: 'Distributed Query Pain',
     problem: 'As data spans partitions, queries degrade into application-layer joins. Performance collapses, forcing denormalization and consistency tradeoffs.',
+    solution_title: 'Distributed Queries, Single Namespace',
     solution: 'Query any data from a unified namespace. TiDB X maintains ACID guarantees across distributed nodes without exposing sharding to the query layer.',
     illustrationBefore: '/illustration/query_pain.svg',
     illustrationAfter: '/illustration/no_query_pain.svg',
@@ -109,7 +113,7 @@ export function WithoutTiDBSection() {
                     }}
                   >
                     <h3 className="text-xl sm:text-3xl text-[#0a0a0a] mb-4 sm:mb-6">
-                      How TiDB X Solves This
+                      {item.solution_title}
                     </h3>
                     <p className="text-base sm:text-lg text-[#0a0a0a] leading-relaxed">
                       {item.solution}
