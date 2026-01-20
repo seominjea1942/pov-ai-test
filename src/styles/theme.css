@@ -1,8 +1,30 @@
 @custom-variant dark (&:is(.dark *));
 
+/* Import the fonts */
+@font-face {
+  font-family: 'moderat';
+  src: url('/fonts/Moderat-Bold.otf') format('otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'moderat';
+  src: url('/fonts/Moderat-Medium.otf') format('otf');
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'moderat';
+  src: url('/fonts/Moderat-Regular.otf') format('otf');
+  font-weight: regular;
+  font-style: normal;
+}
+
 :root {
   --font-size: 16px;
-  --background: #ffffff;
+  --background: #000000;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
@@ -40,6 +62,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --header-height: 86px;
+  --font-primary: 'moderat', sans-serif;
 }
 
 .dark {
@@ -127,6 +150,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-primary);
   }
 
   /**
@@ -142,41 +166,55 @@
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-primary);
   }
 
   h2 {
     font-size: var(--text-xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-primary);
   }
 
   h3 {
     font-size: var(--text-lg);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-primary);
   }
 
   h4 {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-primary);
+  }
+
+  p {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.5;
+    font-family: var(--font-primary);
   }
 
   label {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-primary);
   }
 
   button {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-primary);
   }
 
   input {
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+    font-family: var(--font-primary);
   }
 }

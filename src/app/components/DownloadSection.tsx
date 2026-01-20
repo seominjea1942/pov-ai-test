@@ -18,17 +18,17 @@ const DOWNLOADS = [
 
 export function DownloadSection() {
   return (
-    <section className="bg-[rgb(0,0,0)] p-[8px]">
+    <section className="bg-[rgb(0,0,0)]">
       <div className="w-full h-full flex flex-col">
         {/* Header */}
-        <div className="mb-[8px] p-[32px] border border-[#1f2426] bg-black">
-          <h2 className="text-5xl font-['Moderat:Medium',sans-serif] text-[#dae2e5]">
-            Download
+        <div className="border-b border-t border-[#1f2426] py-10 flex items-center justify-center bg-[#000000]">
+          <h2 className="text-2xl text-[#acb9bf] text-center">
+            Are you looking for more resources?
           </h2>
         </div>
 
         {/* Download Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[8px] flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 flex-1">
           {DOWNLOADS.map((item, index) => (
             <motion.div
               key={index}
@@ -36,18 +36,22 @@ export function DownloadSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="border border-[#1f2426] p-8 bg-black hover:bg-[#1a1a1a] transition-colors cursor-pointer group h-full"
+              className="outline outline-1 outline-[#1f2426] p-8 bg-black hover:bg-[#1a1a1a] transition-colors cursor-pointer group h-full flex flex-col"
             >
-              <h3 className="text-2xl font-['Moderat:Medium',sans-serif] text-[#dae2e5] mb-4">
-                {item.title}
-              </h3>
-              <p className="text-lg text-[#acb9bf] leading-relaxed mb-6">
-                {item.description}
-              </p>
-              <button className="flex items-center gap-2 text-[#fb655d] font-['Moderat:Medium',sans-serif] group-hover:gap-3 transition-all">
-                <Download className="w-5 h-5" />
-                Download
-              </button>
+              <div className="flex-1">
+                <h3 className="text-2xl text-[#FFFFFF] mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-lg text-[#acb9bf] leading-relaxed mb-4">
+                  {item.description}
+                </p>
+              </div>
+              <div className="mt-auto">
+                <button className="flex items-center gap-2 text-[#fb655d] transition-all">
+                  <Download className="w-5 h-5" />
+                  Download
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -14,7 +14,7 @@ const PingCAPLogo = () => (
 const NavLink = ({ children, href = "#", hasDropdown = false }: { children: React.ReactNode, href?: string, hasDropdown?: boolean }) => (
     <a
         href={href}
-        className="text-[15px] font-medium text-white hover:text-white/80 transition-colors flex items-center gap-1 group"
+        className="text-[15px] text-white hover:text-white/80 transition-colors flex items-center gap-1 group"
     >
         {children}
         {hasDropdown && (
@@ -51,12 +51,11 @@ export const Header = () => {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-black border-[#1F2426]",
-                isScrolled ? "h-[72px]" : "h-[80px]"
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-black border-[#1F2426] h-[72px]"
             )}
         >
             
-                <div className="px-6 w-full h-full flex items-center justify-between max-w-[1440px] mx-auto">
+                <div className="px-4 lg:px-6 w-full h-full flex items-center justify-between max-w-[1440px] mx-auto">
                     {/* Logo */}
                     <a href="/" className="flex-shrink-0" aria-label="PingCAP Home">
                         <PingCAPLogo />
@@ -73,7 +72,7 @@ export const Header = () => {
                     <div className="hidden lg:flex items-center gap-6 ml-auto">
                         <a
                             href="#"
-                            className="bg-white text-black px-5 py-2.5 text-[16px] font-medium hover:bg-white/90 transition-all flex items-center gap-2 group"
+                            className="bg-white text-black px-5 py-2.5 text-[16px] hover:bg-white/90 transition-all flex items-center gap-2 group"
                         >
                             Get Demo Account
                             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -99,7 +98,7 @@ export const Header = () => {
                         transition={{ type: 'tween', duration: 0.3 }}
                         className="fixed inset-0 bg-black z-[60] flex flex-col"
                     >
-                        <div className="flex items-center justify-between px-6 h-[86px] border-b border-[#1F2426]">
+                        <div className="flex items-center justify-between px-4 h-[86px] border-b border-[#1F2426]">
                             <a href="/" aria-label="PingCAP Home">
                                 <PingCAPLogo />
                             </a>
@@ -121,7 +120,7 @@ export const Header = () => {
                             </div>
 
                             <div className="mt-auto space-y-4 pt-8 border-t border-white/10">
-                                <a href="#" className="block w-full text-center py-3 bg-white text-black font-medium hover:bg-white/90">
+                                <a href="#" className="block w-full text-center py-3 bg-white text-black hover:bg-white/90">
                                     Get Demo Account
                                 </a>
                             </div>
@@ -134,7 +133,7 @@ export const Header = () => {
 };
 
 const MobileNavLink = ({ children }: { children: React.ReactNode }) => (
-    <a href="#" className="flex items-center justify-between text-xl font-medium text-white py-2 border-b border-white/5">
+    <a href="#" className="flex items-center justify-between text-xl text-white py-2 border-b border-white/5">
         {children}
         <ChevronDown className="w-5 h-5 text-white/40 -rotate-90" />
     </a>

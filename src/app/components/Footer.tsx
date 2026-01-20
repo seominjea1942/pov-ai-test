@@ -5,7 +5,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Company */}
           <div>
-            <h3 className="text-lg font-['Moderat:Bold',sans-serif] text-[#dae2e5] mb-4">
+            <h3 className="text-lg text-[#dae2e5] mb-4">
               Company
             </h3>
             <ul className="space-y-3">
@@ -34,7 +34,7 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h3 className="text-lg font-['Moderat:Bold',sans-serif] text-[#dae2e5] mb-4">
+            <h3 className="text-lg text-[#dae2e5] mb-4">
               Product
             </h3>
             <ul className="space-y-3">
@@ -63,7 +63,7 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-['Moderat:Bold',sans-serif] text-[#dae2e5] mb-4">
+            <h3 className="text-lg text-[#dae2e5] mb-4">
               Resources
             </h3>
             <ul className="space-y-3">
@@ -92,7 +92,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-lg font-['Moderat:Bold',sans-serif] text-[#dae2e5] mb-4">
+            <h3 className="text-lg text-[#dae2e5] mb-4">
               Legal
             </h3>
             <ul className="space-y-3">
@@ -138,19 +138,6 @@ export function Footer() {
               GitHub
             </a>
           </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="mt-12 text-center">
-          <p className="text-[#acb9bf] mb-4">
-            Ready to get started or just looking to explore what's possible?
-          </p>
-          <a 
-            href="https://www.pingcap.com/essential101/" 
-            className="inline-block bg-[#fb655d] text-[#0a0a0a] px-8 py-3 font-['Moderat:Medium',sans-serif] hover:bg-[#ff7f78] transition-colors"
-          >
-            Discover Essential101
-          </a>
         </div>
       </div>
     </footer>

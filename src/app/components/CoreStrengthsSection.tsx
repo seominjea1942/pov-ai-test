@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-
+import { motion, useScroll } from 'motion/react';
+import { useRive } from '@rive-app/react-canvas'; // Use the hook for Rive
+import strength1MotionUrl from '/motion/strength1_motion.riv?url'; // Import the .riv file as a URL
+import strength2MotionUrl from '/motion/strength2_motion.riv?url'; // Import the .riv file for strength2
+import strength3MotionUrl from '/motion/strength3_motion.riv?url'; // Import the .riv file for strength3
+import strength4MotionUrl from '/motion/strength4_motion.riv?url'; // Import the .riv file for strength4
 
 const STRENGTHS = [
   {
@@ -34,6 +38,30 @@ export function CoreStrengthsSection() {
     offset: ['start start', 'end end'],
   });
 
+  const { RiveComponent: RiveComponent1 } = useRive({
+    src: strength1MotionUrl,
+    stateMachines: ['State Machine 1'],
+    autoplay: true,
+  });
+
+  const { RiveComponent: RiveComponent2 } = useRive({
+    src: strength2MotionUrl,
+    stateMachines: ['State Machine 1'],
+    autoplay: true,
+  });
+
+  const { RiveComponent: RiveComponent3 } = useRive({
+    src: strength3MotionUrl,
+    stateMachines: ['State Machine 1'],
+    autoplay: true,
+  });
+
+  const { RiveComponent: RiveComponent4 } = useRive({
+    src: strength4MotionUrl,
+    stateMachines: ['State Machine 1'],
+    autoplay: true,
+  });
+
   useEffect(() => {
     return scrollYProgress.on('change', (latest) => {
       const step = Math.min(Math.floor(latest * 4), 3);
@@ -46,102 +74,106 @@ export function CoreStrengthsSection() {
       className="h-[500vh] relative"
       ref={sectionRef}
     >
-      <div className="sticky top-[var(--header-height)] h-[calc(100vh-var(--header-height))] flex items-center justify-center bg-[#0a0a0a] px-[8px]">
-        <div className="w-full h-full flex gap-[11px]">
-          {/* Left Content Side */}
-          <div className="flex-1 flex flex-col gap-[10px]">
-            {/* Top Section - Indicators and Content */}
-            <div className="bg-[rgb(15,15,15)] px-[32px] py-[30px] flex flex-col gap-[16px] flex-1">
-              {/* Step Indicators */}
-              <div className="flex gap-[11px]">
-                {STRENGTHS.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`w-[16px] h-[16px] transition-colors duration-300 ${index === activeStep
-                      ? 'bg-[#fb655d]'
-                      : 'bg-[#313638]'
-                      }`}
-                  />
-                ))}
-              </div>
-
-              {/* Content */}
-              <div className="relative flex-1 flex items-end">
-                {STRENGTHS.map((strength, index) => (
-                  <div
-                    key={index}
-                    className={index === activeStep ? 'block w-full' : 'absolute bottom-0 pointer-events-none w-full'}
-                  >
-                    {/* Header Mask */}
-                    <div className="overflow-hidden mb-[16px]">
-                      <motion.h2
-                        initial={{ y: '100%' }}
-                        animate={{ y: index === activeStep ? 0 : '100%' }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-[40px] font-['Moderat:Medium',sans-serif] text-[#dae2e5] leading-normal"
-                      >
-                        <span className="text-[#fb655d]">{strength.title.split(' ')[0]}</span>
-                        <span className="text-[#dae2e5]">{strength.title.substring(strength.title.indexOf(' '))}</span>
-                      </motion.h2>
-                    </div>
-                    {/* Description Mask */}
-                    <div className="overflow-hidden">
-                      <motion.p
-                        initial={{ y: '100%' }}
-                        animate={{ y: index === activeStep ? 0 : '100%' }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-                        className="text-[24px] text-[#dae2e5] leading-[1.5] font-['Moderat:Regular',sans-serif] max-w-[473px]"
-                      >
-                        {strength.description}
-                      </motion.p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+      <div className="sticky top-[var(--header-height)] h-[calc(100vh-var(--header-height))] flex flex-col lg:flex-row bg-[#0a0a0a] px-0">
+        {/* Left Content Side */}
+        <div className="flex-1 flex flex-col border-b lg:border-b-0 lg:border-r border-[#1f2426]">
+          {/* Top Section - Indicators and Content */}
+          <div className="bg-[#0F0F0F] px-16 py-20 flex flex-col flex-1 border-b border-[#1f2426]">
+            {/* Step Indicators */}
+            <div className="flex gap-2 mb-12">
+              {STRENGTHS.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-3 h-3 transition-colors duration-300 ${index === activeStep
+                    ? 'bg-[#fb655d]'
+                    : 'bg-[#1f2426]'
+                    }`}
+                />
+              ))}
             </div>
 
-            {/* Bottom Section - Benefit Statement */}
-            <div className="bg-[#fb655d] px-[56px] py-[65px] flex items-center justify-center">
-              <div className="relative overflow-hidden w-full max-w-[619px]">
-                {STRENGTHS.map((strength, index) => (
-                  <div
-                    key={index}
-                    className={index === activeStep ? 'block w-full' : 'absolute top-0 pointer-events-none w-full'}
-                  >
-                    <div className="overflow-hidden">
-                      <motion.p
-                        initial={{ y: '100%' }}
-                        animate={{ y: index === activeStep ? 0 : '100%' }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-[24px] font-['Moderat:Medium',sans-serif] leading-normal text-[#0a0a0a]"
-                      >
-                        {strength.result}
-                      </motion.p>
-                    </div>
+            {/* Content */}
+            <div className="relative flex-1 flex flex-col justify-center">
+              {STRENGTHS.map((strength, index) => (
+                <div
+                  key={index}
+                  className={index === activeStep ? 'block w-full' : 'absolute inset-0 pointer-events-none w-full opacity-0'}
+                >
+                  {/* Header Mask */}
+                  <div className="overflow-hidden mb-6">
+                    <motion.h2
+                      initial={{ y: '100%' }}
+                      animate={{ y: index === activeStep ? 0 : '100%' }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-5xl text-[#dae2e5] leading-tight"
+                    >
+                      <span className="text-[#fb655d]">{strength.title.split(' ')[0]}</span>
+                      <span className="text-[#FFFFFF]">{strength.title.substring(strength.title.indexOf(' '))}</span>
+                    </motion.h2>
                   </div>
-                ))}
-              </div>
+                  {/* Description Mask */}
+                  <div className="overflow-hidden">
+                    <motion.p
+                      initial={{ y: '100%' }}
+                      animate={{ y: index === activeStep ? 0 : '100%' }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+                      className="text-xl text-[#dae2e5]/80 leading-relaxed max-w-lg"
+                    >
+                      {strength.description}
+                    </motion.p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Visual Side */}
-          <div className="flex-1 bg-[rgb(15,15,15)] flex items-center justify-center">
-            <div className="relative w-[419px] h-[419px]">
-              {/* Circle */}
-              <svg className="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 419 419">
-                <circle cx="209.5" cy="209.5" r="209" stroke="white" fill="none" />
-              </svg>
-
-              {/* Ellipse Placeholder */}
-              <div className="absolute left-[47px] top-[177px] w-[324px] h-[78px]">
-                <svg className="w-full h-full" fill="none" viewBox="0 0 324 78">
-                  <ellipse cx="162" cy="39" rx="162" ry="39" fill="#D9D9D9" />
-                </svg>
-                <p className="absolute top-[24px] left-1/2 -translate-x-1/2 text-[24px] font-['Moderat:Regular',sans-serif] text-black leading-normal whitespace-nowrap">
-                  *Image place holder
-                </p>
-              </div>
+          {/* Bottom Section - Benefit Statement (Red Background) */}
+          <div className="bg-[#fb655d] px-16 py-12 flex items-center min-h-[160px]">
+            <div className="relative overflow-hidden w-full">
+              {STRENGTHS.map((strength, index) => (
+                <div
+                  key={index}
+                  className={index === activeStep ? 'block w-full' : 'absolute inset-0 pointer-events-none w-full opacity-0'}
+                >
+                  <div className="overflow-hidden">
+                    <motion.p
+                      initial={{ y: '100%' }}
+                      animate={{ y: index === activeStep ? 0 : '100%' }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-2xl leading-snug text-[#0F0F0F]"
+                    >
+                      {strength.result}
+                    </motion.p>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+
+        {/* Right Visual Side */}
+        <div className="flex-1 bg-[#0a0a0a] flex items-center justify-center p-20">
+          <div className="relative aspect-square w-full flex items-center justify-center">
+            {/* Conditional Rendering for Strengths */}
+            {activeStep === 0 && <RiveComponent1 />}
+            {activeStep === 1 && <RiveComponent2 />}
+            {activeStep === 2 && <RiveComponent3 />}
+            {activeStep === 3 && <RiveComponent4 />}
+            {activeStep !== 0 && activeStep !== 1 && activeStep !== 2 && activeStep !== 3 && (
+              <div className="w-full h-full border border-[#1f2426] rounded-sm bg-[#0f0f0f] flex items-center justify-center group relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#fb655d]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Visual placeholder */}
+                <div className="relative z-10 text-center">
+                  <div className="w-16 h-16 border border-[#fb655d]/30 rounded-full mb-4 mx-auto flex items-center justify-center">
+                    <div className="w-2 h-2 bg-[#fb655d] rounded-full animate-pulse" />
+                  </div>
+                  <p className="text-sm text-[#dae2e5]/40 uppercase tracking-widest">
+                    *Image placeholder
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

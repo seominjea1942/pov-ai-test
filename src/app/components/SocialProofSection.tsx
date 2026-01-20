@@ -1,12 +1,20 @@
 import { motion } from 'motion/react';
 
-const LOGOS = ['OpenAI', 'Anthropic', 'Cohere', 'Hugging Face', 'Stability AI', 'Midjourney'];
+const LOGOS = [
+  { name: 'TechCorp', src: '/logo/logoipsum-419.svg' },
+  { name: 'DataFlow', src: '/logo/logoipsum-418.svg' },
+  { name: 'CloudBase', src: '/logo/logoipsum-415.svg' },
+  { name: 'AI Nexus', src: '/logo/logoipsum-409.svg' },
+  { name: 'GreenCompute', src: '/logo/logoipsum-392.svg' },
+];
 
 function LogoRow({ reverse = false }: { reverse?: boolean }) {
+  const logos = reverse ? [...LOGOS].reverse() : LOGOS;
+
   return (
-    <div className="overflow-hidden relative flex">
+    <div className="overflow-hidden relative flex box-border border-b border-[#1f2426]">
       <motion.div
-        className="flex gap-2"
+        className="flex"
         animate={{
           x: reverse ? ["-50%", "0%"] : ["0%", "-50%"],
         }}
@@ -21,14 +29,16 @@ function LogoRow({ reverse = false }: { reverse?: boolean }) {
         style={{ width: "fit-content", display: "flex" }}
       >
         {/* Quadruple set to ensure seamless loop with large widths on all screen sizes */}
-        {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((logo, index) => (
+        {[...logos, ...logos, ...logos, ...logos].map((logo, index) => (
           <div
-            key={`${logo}-${index}`}
-            className="border border-[#1f2426] h-40 min-w-[25vw] flex items-center justify-center bg-[#0a0a0a]"
+            key={`${logo.name}-${index}`}
+            className="border-r border-[#1f2426] h-40 min-w-[25vw] flex items-center justify-center bg-[#000000]"
           >
-            <p className="text-2xl font-['Moderat:Bold',sans-serif] text-[#dae2e5]">
-              {logo}
-            </p>
+            <img
+              src={logo.src}
+              alt={logo.name}
+              className="h-12 w-auto filter opacity-35 px-4"
+            />
           </div>
         ))}
       </motion.div>
@@ -38,19 +48,19 @@ function LogoRow({ reverse = false }: { reverse?: boolean }) {
 
 export function SocialProofSection() {
   return (
-    <section className="relative z-20 bg-[#0a0a0a] py-2">
-      <div className="w-full">
+    <section className="relative z-20 py-0">
+      <div className="w-full border-[#1f2426]">
         {/* Header */}
-        <div className="border border-[#1f2426] mb-2 py-8 flex items-center justify-center mx-2">
-          <h2 className="text-2xl font-['Moderat:Bold',sans-serif] text-[#dae2e5] text-center">
+        <div className="border-b border-[#1f2426] py-10 flex items-center justify-center bg-[#000000]">
+          <h2 className="text-2xl text-[#dae2e5] text-center opacity-60 px-4">
             Trusted by leading companies in AI
           </h2>
         </div>
 
         {/* Logo Rows */}
-        <div className="flex flex-col gap-2">
-          <LogoRow reverse={true} /> {/* Top Row: Moving Right */}
-          <LogoRow reverse={false} /> {/* Bottom Row: Moving Left (as requested) */}
+        <div className="flex flex-col">
+          <LogoRow reverse={true} /> {/* Top Row: Moving Right, Reversed Order */}
+          <LogoRow reverse={false} /> {/* Bottom Row: Moving Left */}
         </div>
       </div>
     </section>
