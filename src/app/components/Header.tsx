@@ -7,7 +7,7 @@ const PingCAPLogo = () => (
     <img
         src="/TiDB-Logo-Full-Rev-RGB.svg"
         alt="TiDB Logo"
-        className="h-16 w-auto"
+        className="h-10 sm:h-16 w-auto"
     />
 );
 
@@ -54,39 +54,39 @@ export const Header = () => {
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-black border-[#1F2426] h-[72px]"
             )}
         >
-            
-                <div className="px-4 lg:px-6 w-full h-full flex items-center justify-between max-w-[1440px] mx-auto">
-                    {/* Logo */}
-                    <a href="/" className="flex-shrink-0" aria-label="PingCAP Home">
-                        <PingCAPLogo />
-                    </a>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-8 ml-10">
-                        <NavLink href="#" >Resources</NavLink>
-                        <NavLink href="#" >Self-Check</NavLink>
-                        <NavLink href="#">Docs</NavLink>
-                    </nav>
+            <div className="px-4 lg:px-6 w-full h-full flex items-center justify-between max-w-[1440px] mx-auto">
+                {/* Logo */}
+                <a href="/" className="flex-shrink-0" aria-label="PingCAP Home">
+                    <PingCAPLogo />
+                </a>
 
-                    {/* Right Actions */}
-                    <div className="hidden lg:flex items-center gap-6 ml-auto">
-                        <a
-                            href="#"
-                            className="bg-white text-black px-5 py-2.5 text-[16px] hover:bg-white/90 transition-all flex items-center gap-2 group"
-                        >
-                            Get Demo Account
-                            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                        </a>
-                    </div>
+                {/* Desktop Navigation */}
+                <nav className="hidden lg:flex items-center gap-8 ml-10">
+                    <NavLink href="#" >Resources</NavLink>
+                    <NavLink href="#" >Self-Check</NavLink>
+                    <NavLink href="#">Docs</NavLink>
+                </nav>
 
-                    {/* Mobile Menu Toggle */}
-                    <button
-                        className="lg:hidden text-white"
-                        onClick={() => setIsMobileMenuOpen(true)}
+                {/* Right Actions */}
+                <div className="hidden lg:flex items-center gap-6 ml-auto">
+                    <a
+                        href="#"
+                        className="bg-white text-black px-5 py-2.5 text-[16px] hover:bg-white/90 transition-all flex items-center gap-2 group"
                     >
-                        <Menu className="w-6 h-6" />
-                    </button>
+                        Get Demo Account
+                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
                 </div>
+
+                {/* Mobile Menu Toggle */}
+                <button
+                    className="lg:hidden text-white"
+                    onClick={() => setIsMobileMenuOpen(true)}
+                >
+                    <Menu className="w-6 h-6" />
+                </button>
+            </div>
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>

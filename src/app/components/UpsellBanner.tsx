@@ -10,8 +10,8 @@ export function UpsellBanner() {
         muted
       />
       {/* Content */}
-      <div className="relative z-10 text-center px-48">
-        <h2 className="text-[48px] mb-4 leading-[1.1] text-[#ffffff]">
+      <div className="relative z-10 text-center px-4 md:px-48">
+        <h2 className="text-[36px] md:text-[48px] leading-[1.1] text-[#ffffff] mb-4">
           Ready to take your AI systems to the next level?
         </h2>
         <p className="text-xl lg:text-2xl mb-6 leading-relaxed text-[#A2ADB9]">

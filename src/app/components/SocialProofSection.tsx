@@ -32,12 +32,12 @@ function LogoRow({ reverse = false }: { reverse?: boolean }) {
         {[...logos, ...logos, ...logos, ...logos].map((logo, index) => (
           <div
             key={`${logo.name}-${index}`}
-            className="border-r border-[#1f2426] h-40 min-w-[25vw] flex items-center justify-center bg-[#000000]"
+            className="border-r border-[#1f2426] h-32 sm:h-40 min-w-[33vw] md:min-w-[25vw] flex items-center justify-center bg-[#000000]"
           >
             <img
               src={logo.src}
               alt={logo.name}
-              className="h-12 w-auto filter opacity-35 px-4"
+              className="h-8 sm:h-12 w-auto filter opacity-35 px-2 sm:px-4"
             />
           </div>
         ))}
@@ -51,8 +51,8 @@ export function SocialProofSection() {
     <section className="relative z-20 py-0">
       <div className="w-full border-[#1f2426]">
         {/* Header */}
-        <div className="border-b border-[#1f2426] py-10 flex items-center justify-center bg-[#000000]">
-          <h2 className="text-2xl text-[#dae2e5] text-center opacity-60 px-4">
+        <div className="border-b border-[#1f2426] py-6 sm:py-10 flex items-center justify-center bg-[#000000] px-4">
+          <h2 className="text-lg sm:text-2xl text-[#dae2e5] text-center opacity-60">
             Trusted by leading companies in AI
           </h2>
         </div>

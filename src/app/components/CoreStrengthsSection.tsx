@@ -76,9 +76,9 @@ export function CoreStrengthsSection() {
     >
       <div className="sticky top-[var(--header-height)] h-[calc(100vh-var(--header-height))] flex flex-col lg:flex-row bg-[#0a0a0a] px-0">
         {/* Left Content Side */}
-        <div className="flex-1 flex flex-col border-b lg:border-b-0 lg:border-r border-[#1f2426]">
+        <div className="flex flex-col lg:w-1/2 border-b lg:border-b-0 lg:border-r border-[#1f2426] relative">
           {/* Top Section - Indicators and Content */}
-          <div className="bg-[#0F0F0F] px-16 py-20 flex flex-col flex-1 border-b border-[#1f2426]">
+          <div className="bg-[#0F0F0F] px-6 md:px-16 py-4 md:py-20 flex flex-col border-b border-[#1f2426] flex-grow lg:flex-grow-0 lg:h-[calc(100%-160px)] justify-end">
             {/* Step Indicators */}
             <div className="flex gap-2 mb-12">
               {STRENGTHS.map((_, index) => (
@@ -93,19 +93,19 @@ export function CoreStrengthsSection() {
             </div>
 
             {/* Content */}
-            <div className="relative flex-1 flex flex-col justify-center">
+            <div className="relative flex-1 flex flex-col justify-end">
               {STRENGTHS.map((strength, index) => (
                 <div
                   key={index}
                   className={index === activeStep ? 'block w-full' : 'absolute inset-0 pointer-events-none w-full opacity-0'}
                 >
                   {/* Header Mask */}
-                  <div className="overflow-hidden mb-6">
+                  <div className="overflow-hidden mb-0 md:mb-6">
                     <motion.h2
                       initial={{ y: '100%' }}
                       animate={{ y: index === activeStep ? 0 : '100%' }}
                       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-5xl text-[#dae2e5] leading-tight"
+                      className="text-[36px] md:text-[48px] leading-[1.1] text-[#dae2e5] mb-2 md:mb-6"
                     >
                       <span className="text-[#fb655d]">{strength.title.split(' ')[0]}</span>
                       <span className="text-[#FFFFFF]">{strength.title.substring(strength.title.indexOf(' '))}</span>
@@ -117,7 +117,7 @@ export function CoreStrengthsSection() {
                       initial={{ y: '100%' }}
                       animate={{ y: index === activeStep ? 0 : '100%' }}
                       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-                      className="text-xl text-[#dae2e5]/80 leading-relaxed max-w-lg"
+                      className="text-base lg:text-2xl text-[#dae2e5]/80 leading-relaxed max-w-lg"
                     >
                       {strength.description}
                     </motion.p>
@@ -128,7 +128,7 @@ export function CoreStrengthsSection() {
           </div>
 
           {/* Bottom Section - Benefit Statement (Red Background) */}
-          <div className="bg-[#fb655d] px-16 py-12 flex items-center min-h-[160px]">
+          <div className="bg-[#fb655d] px-6 md:px-16 py-12 flex items-center min-h-[160px] hidden lg:flex flex-shrink-0 absolute bottom-0 w-full">
             <div className="relative overflow-hidden w-full">
               {STRENGTHS.map((strength, index) => (
                 <div
@@ -140,7 +140,7 @@ export function CoreStrengthsSection() {
                       initial={{ y: '100%' }}
                       animate={{ y: index === activeStep ? 0 : '100%' }}
                       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-2xl leading-snug text-[#0F0F0F]"
+                      className="text-base lg:text-2xl leading-snug text-[#0F0F0F]"
                     >
                       {strength.result}
                     </motion.p>
@@ -152,8 +152,8 @@ export function CoreStrengthsSection() {
         </div>
 
         {/* Right Visual Side */}
-        <div className="flex-1 bg-[#0a0a0a] flex items-center justify-center p-20">
-          <div className="relative aspect-square w-full flex items-center justify-center">
+        <div className="flex-1 lg:w-1/2 bg-[#0a0a0a] flex items-center justify-center h-full lg:h-auto overflow-hidden">
+          <div className="relative aspect-square w-full max-h-[calc(100vh-var(--header-height)-var(--content-height))] flex items-center justify-center px-4 ">
             {/* Conditional Rendering for Strengths */}
             {activeStep === 0 && <RiveComponent1 />}
             {activeStep === 1 && <RiveComponent2 />}

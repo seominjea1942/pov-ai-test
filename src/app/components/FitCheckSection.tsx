@@ -24,14 +24,14 @@ export function FitCheckSection() {
   const hasNo = Object.values(answers).some(answer => answer === false);
 
   return (
-    <section className="bg-[#000000] py-32 flex items-center">
-      <div className="max-w-[912px] mx-auto px-8 w-full">
+    <section className="bg-[#000000] py-16 sm:py-32 flex items-center">
+      <div className="max-w-[912px] mx-auto px-4 sm:px-8 w-full">
         {/* Header */}
-        <div className="mb-[64px] text-center">
-          <h2 className="text-[48px] mb-4 leading-normal">
+        <div className="mb-12 sm:mb-[64px] text-center">
+          <h2 className="text-[28px] sm:text-[36px] md:text-[48px] leading-[1.1] text-[#dae2e5] mb-4 text-center">
             Choose What Fits Your Stage Today
           </h2>
-          <p className="text-[20px] text-[#acb9bf] leading-normal px-16">
+          <p className="text-base sm:text-[20px] text-[#acb9bf] leading-normal px-0 sm:px-16">
             We value transparency. TiDB X is designed for teams pushing beyond traditional limits. If you’re still validating your MVP, stay focused—we’ll be ready when scaling becomes real.
           </p>
         </div>
@@ -45,16 +45,16 @@ export function FitCheckSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#0F0F0F] p-[24px]"
+              className="bg-[#0F0F0F] p-4 sm:p-[24px]"
             >
               <div className="flex items-center justify-between gap-8 ">
-                <p className="text-[20px] text-[#dae2e5] flex-1 leading-[20px]">
+                <p className="text-base sm:text-[20px] text-[#dae2e5] flex-1 leading-tight sm:leading-[20px]">
                   {question}
                 </p>
                 <div className="flex gap-[8px]">
                   <button
                     onClick={() => handleToggle(index, true)}
-                    className={`h-[40px] w-[60px] px-[12px] py-[8px] text-[14px] leading-[20px] transition-colors ${answers[index] === true
+                    className={`h-[40px] w-[50px] sm:w-[60px] px-[8px] sm:px-[12px] py-[8px] text-[12px] sm:text-[14px] leading-[20px] transition-colors ${answers[index] === true
                       ? 'bg-[#50dbd9] text-[#14181a]'
                       : 'bg-[#1f2426] text-[#50585c] hover:bg-[#313638]'
                       }`}
@@ -63,7 +63,7 @@ export function FitCheckSection() {
                   </button>
                   <button
                     onClick={() => handleToggle(index, false)}
-                    className={`h-[40px] w-[60px] px-[12px] py-[8px] text-[14px] leading-[20px] transition-colors ${answers[index] === false
+                    className={`h-[40px] w-[50px] sm:w-[60px] px-[8px] sm:px-[12px] py-[8px] text-[12px] sm:text-[14px] leading-[20px] transition-colors ${answers[index] === false
                       ? 'bg-[#50dbd9] text-[#14181a]'
                       : 'bg-[#1f2426] text-[#50585c] hover:bg-[#313638]'
                       }`}
